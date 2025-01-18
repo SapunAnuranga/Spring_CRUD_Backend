@@ -62,4 +62,14 @@ public class UserServiceIMPL implements UserService {
             return "Error: User ID not found.";
         }
     }
+
+    @Override
+    public boolean deleteUser(int id) {
+        if (userRepo.existsById(id)) {
+            userRepo.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

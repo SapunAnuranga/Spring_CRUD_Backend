@@ -33,4 +33,13 @@ public class UserController {
     public String updateUser(@RequestBody UserUpdateDTO userUpdateDTO) {
         return userService.updateUser(userUpdateDTO);
     }
+
+    @DeleteMapping(path = "/deleteUser/{id}")
+    public String deleteUser(@PathVariable int id) {
+        if (userService.deleteUser(id)) {
+            return "Deleted successfully";
+        } else {
+            return "Error: User ID not found.";
+        }
+    }
 }
